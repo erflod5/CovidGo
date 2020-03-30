@@ -1,0 +1,2 @@
+# CovidGoServer
+Servidor en GoLang
