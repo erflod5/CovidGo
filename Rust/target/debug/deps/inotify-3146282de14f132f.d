@@ -1,0 +1,12 @@
+/home/erflod5/projects/hello-rocket/target/debug/deps/inotify-3146282de14f132f.rmeta: /home/erflod5/.cargo/registry/src/github.com-1ecc6299db9ec823/inotify-0.7.0/src/lib.rs /home/erflod5/.cargo/registry/src/github.com-1ecc6299db9ec823/inotify-0.7.0/src/events.rs /home/erflod5/.cargo/registry/src/github.com-1ecc6299db9ec823/inotify-0.7.0/src/fd_guard.rs /home/erflod5/.cargo/registry/src/github.com-1ecc6299db9ec823/inotify-0.7.0/src/inotify.rs /home/erflod5/.cargo/registry/src/github.com-1ecc6299db9ec823/inotify-0.7.0/src/util.rs /home/erflod5/.cargo/registry/src/github.com-1ecc6299db9ec823/inotify-0.7.0/src/watches.rs
+
+/home/erflod5/projects/hello-rocket/target/debug/deps/libinotify-3146282de14f132f.rlib: /home/erflod5/.cargo/registry/src/github.com-1ecc6299db9ec823/inotify-0.7.0/src/lib.rs /home/erflod5/.cargo/registry/src/github.com-1ecc6299db9ec823/inotify-0.7.0/src/events.rs /home/erflod5/.cargo/registry/src/github.com-1ecc6299db9ec823/inotify-0.7.0/src/fd_guard.rs /home/erflod5/.cargo/registry/src/github.com-1ecc6299db9ec823/inotify-0.7.0/src/inotify.rs /home/erflod5/.cargo/registry/src/github.com-1ecc6299db9ec823/inotify-0.7.0/src/util.rs /home/erflod5/.cargo/registry/src/github.com-1ecc6299db9ec823/inotify-0.7.0/src/watches.rs
+
+/home/erflod5/projects/hello-rocket/target/debug/deps/inotify-3146282de14f132f.d: /home/erflod5/.cargo/registry/src/github.com-1ecc6299db9ec823/inotify-0.7.0/src/lib.rs /home/erflod5/.cargo/registry/src/github.com-1ecc6299db9ec823/inotify-0.7.0/src/events.rs /home/erflod5/.cargo/registry/src/github.com-1ecc6299db9ec823/inotify-0.7.0/src/fd_guard.rs /home/erflod5/.cargo/registry/src/github.com-1ecc6299db9ec823/inotify-0.7.0/src/inotify.rs /home/erflod5/.cargo/registry/src/github.com-1ecc6299db9ec823/inotify-0.7.0/src/util.rs /home/erflod5/.cargo/registry/src/github.com-1ecc6299db9ec823/inotify-0.7.0/src/watches.rs
+
+/home/erflod5/.cargo/registry/src/github.com-1ecc6299db9ec823/inotify-0.7.0/src/lib.rs:
+/home/erflod5/.cargo/registry/src/github.com-1ecc6299db9ec823/inotify-0.7.0/src/events.rs:
+/home/erflod5/.cargo/registry/src/github.com-1ecc6299db9ec823/inotify-0.7.0/src/fd_guard.rs:
+/home/erflod5/.cargo/registry/src/github.com-1ecc6299db9ec823/inotify-0.7.0/src/inotify.rs:
+/home/erflod5/.cargo/registry/src/github.com-1ecc6299db9ec823/inotify-0.7.0/src/util.rs:
+/home/erflod5/.cargo/registry/src/github.com-1ecc6299db9ec823/inotify-0.7.0/src/watches.rs:
