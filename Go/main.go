@@ -7,7 +7,7 @@ import (
 	"os"
 	"time"
 
-	"github.com/go-osstat/memory"
+	"github.com/mackerelio/go-osstat/memory"
 )
 
 func main() {
