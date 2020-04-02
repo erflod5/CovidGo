@@ -1,1 +1,1 @@
-/home/erflod5/projects/hello-rocket/target/debug/hello-rocket: /home/erflod5/projects/hello-rocket/src/main.rs
+/home/erflod5/Escritorio/CovidGoServer/Rust/target/debug/hello-rocket: /home/erflod5/Escritorio/CovidGoServer/Rust/src/main.rs
