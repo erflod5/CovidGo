@@ -27,7 +27,12 @@ func main() {
 }
 
 func indexRoute(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintf(w, "Welcome to my webiste")
+	memory, err := memory.Get()
+	if err != nil {
+		fmt.Fprintf(w, "%s\n", err)
+	} else {
+		fmt.Fprintf(w, "{ \"total\" : %d, \"used\": %d, \"free\": %d }", memory.Total/1024/1024, memory.Used/1024/1024, memory.Free/1024/1024)
+	}
 }
 
 func printMemUsage() {
@@ -40,4 +45,5 @@ func printMemUsage() {
 	log.Printf("memory used: %d bytes\n", memory.Used/1024/1024)
 	log.Printf("memory cached: %d bytes\n", memory.Cached/1024/1024)
 	log.Printf("memory free: %d bytes\n\n", memory.Free/1024/1024)
+	//GUARDAR EN BASE DE DATOS AQUI
 }
