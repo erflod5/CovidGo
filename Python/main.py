@@ -3,7 +3,7 @@ from flask import render_template
 import redis
 
 # connect to redis
-client = redis.Redis(host='localhost', port=6379)
+client = redis.Redis(host='192.168.1.187', port=7001)
 
 # creates a Flask application, named app
 app = Flask(__name__)
@@ -19,3 +19,5 @@ def ram():
     value = client.lrange("ram",0,10)
     print(value)
     return ''.join(str(x) + "-" for x in value)
+
+app.run(host ='0.0.0.0', port = 5001, debug = True)

@@ -46,7 +46,7 @@ func printMemUsage() {
 
 func addDataToRedis(value uint64, total uint64) {
 	client := redis.NewClient(&redis.Options{
-		Addr:     "localhost:6379",
+		Addr:     "192.168.1.187:7001",
 		Password: "", // no password set
 		DB:       0,  // use default DB
 	})

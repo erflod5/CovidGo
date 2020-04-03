@@ -1,4 +1,4 @@
-const ip = 'http://localhost:5000';
+const ip = 'http://localhost:5001';
 
 var data =[];
 
@@ -25,7 +25,9 @@ function graph(){
 
 function getData(){
     $.get(`${ip}/ram`, function (result) {
-        var actual = result.split('-');
+        var actual = result.split("b").join("");
+        actual = actual.split("'").join("");
+        actual = actual.split('-');
         for(let i = 0; i < actual.length - 1; i++){
             if(data[i] == undefined) data[i] = {};
 
