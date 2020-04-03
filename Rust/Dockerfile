@@ -1,9 +1,12 @@
-FROM rust:1.31
+FROM rust:1.41.0 as build-env
 
-WORKDIR /usr/src/app
+EXPOSE 8000
+WORKDIR /usr/src/hello-rocket
+
 COPY . .
 
 RUN rustup default nightly
-RUN cargo build
+RUN cargo build --release
+RUN cargo install --path .
 
-CMD ["cargo","run"]
+CMD ["/usr/local/cargo/bin/hello-rocket"]
