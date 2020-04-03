@@ -24,7 +24,7 @@ function getData(){
         var actual = JSON.parse(result);
         data.push({
             time : Date.now(),
-            value : actual.used
+            value : (actual.used/actual.total * 100).toFixed(2)
         });
         if(data.length > 30){
             data.splice(0,1);
