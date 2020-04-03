@@ -2,11 +2,11 @@ package main
 
 import (
 	"fmt"
-	"log"
 	"net/http"
 	"os"
 	"time"
 
+	"github.com/go-redis/redis/v7"
 	"github.com/mackerelio/go-osstat/memory"
 )
 
@@ -41,9 +41,23 @@ func printMemUsage() {
 		fmt.Fprintf(os.Stderr, "%s\n", err)
 		return
 	}
-	log.Printf("memory total: %d bytes\n", memory.Total/1024/1024)
-	log.Printf("memory used: %d bytes\n", memory.Used/1024/1024)
-	log.Printf("memory cached: %d bytes\n", memory.Cached/1024/1024)
-	log.Printf("memory free: %d bytes\n\n", memory.Free/1024/1024)
-	//GUARDAR EN BASE DE DATOS AQUI
+	addDataToRedis((memory.Used / 1024 / 1024), (memory.Total / 1024 / 1024))
+}
+
+func addDataToRedis(value uint64, total uint64) {
+	client := redis.NewClient(&redis.Options{
+		Addr:     "localhost:6379",
+		Password: "", // no password set
+		DB:       0,  // use default DB
+	})
+	err := client.LPush("ram", value*100/total).Err()
+	if err != nil {
+		panic(err)
+	}
+
+	val, err := client.LRange("ram", 0, 30).Result()
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println("key", val)
 }
