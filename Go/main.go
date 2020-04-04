@@ -23,7 +23,7 @@ func main() {
 	fs := http.FileServer(http.Dir("./public"))
 	http.Handle("/static/", http.StripPrefix("/static/", fs))
 
-	http.ListenAndServe(":8000", nil)
+	http.ListenAndServe(":8001", nil)
 }
 
 func indexRoute(w http.ResponseWriter, r *http.Request) {

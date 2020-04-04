@@ -1,4 +1,4 @@
 ```
-docker build -t rust-app .
-docker run -it -d -p 8001:8000 rust-app
+docker build -t rustapp .
+docker run -it -d --name rustServer -p 8000:8000 rustapp
 ```

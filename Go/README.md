@@ -1,4 +1,4 @@
 ```
-docker build -t outyet .
-docker run -d -p 8000:8000 outyet
+docker build -t goserver .
+docker run -d --name goApp -p 8001:8001 goserver
 ```
