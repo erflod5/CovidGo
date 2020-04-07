@@ -1,4 +1,4 @@
-const ip = 'http://localhost:8000';
+const ip = 'http://18.216.57.75:8000';
 
 var data =[];
 

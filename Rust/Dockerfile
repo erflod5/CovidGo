@@ -19,5 +19,6 @@ RUN cargo build --release
 
 FROM gcr.io/distroless/cc
 COPY --from=build-env /app/target/release/hello-rocket /
+COPY --from=build-env /app/static/ /static/
 
 CMD ["./hello-rocket"]

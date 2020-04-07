@@ -5,7 +5,6 @@ extern crate redis;
 extern crate rocket_cors;
 
 //ROCKET
-//use rocket::response::content;
 use rocket_contrib::serve::StaticFiles;
 
 //cpu
@@ -45,7 +44,7 @@ fn make_cors() -> Cors {
     let allowed_origins = AllowedOrigins::some_exact(&[ // 4.
         "http://localhost:5001",
         "http://127.0.0.1:5001",
-        "http://localhost:5001",
+        "http://18.216.57.75:5001",
         "http://0.0.0.0:5001",
     ]);
 
@@ -76,7 +75,7 @@ fn main(){
 }
 
 fn add_to_rust(val : String, val2 : String) -> redis::RedisResult<()> {
-    let client = redis::Client::open("redis://192.168.1.187:7001")?;
+    let client = redis::Client::open("redis://18.216.57.75:7001")?;
     let mut con = client.get_connection()?;
     let _ : () = con.lpush("cpu",val)?;
     let _ : () = con.set("last",val2)?;
@@ -85,7 +84,7 @@ fn add_to_rust(val : String, val2 : String) -> redis::RedisResult<()> {
 
 fn post_greeting() -> impl Future<Item=(), Error=()> {
     Client::new()
-        .get("http://localhost:8002/cpu")
+        .get("http://18.216.57.75:8002/cpu")
         .send()
         .and_then(|mut res| {
             let body = mem::replace(res.body_mut(), Decoder::empty());
@@ -101,7 +100,7 @@ fn post_greeting() -> impl Future<Item=(), Error=()> {
 }
 
 fn get_last() -> redis::RedisResult<String> {
-    let client = redis::Client::open("redis://192.168.1.187:7001")?;
+    let client = redis::Client::open("redis://18.216.57.75:7001")?;
     let mut con = client.get_connection()?;
     con.get("last")
 }
