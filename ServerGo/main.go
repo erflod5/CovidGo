@@ -12,7 +12,7 @@ import (
 func main() {
 	http.HandleFunc("/ram", ramRoute)
 	http.HandleFunc("/cpu", cpuRoute)
-	http.ListenAndServe(":8001", nil)
+	http.ListenAndServe(":8002", nil)
 }
 
 func ramRoute(w http.ResponseWriter, r *http.Request) {
@@ -26,11 +26,5 @@ func ramRoute(w http.ResponseWriter, r *http.Request) {
 
 func cpuRoute(w http.ResponseWriter, r *http.Request) {
 	percent, _ := cpu.Percent(time.Second, true)
-	fmt.Printf("  User: %.2f\n", percent[0])
-	fmt.Printf("  Nice: %.2f\n", percent[1])
-	fmt.Printf("   Sys: %.2f\n", percent[2])
-	fmt.Printf("  Intr: %.2f\n", percent[3])
-	fmt.Printf("  Idle: %.2f\n", percent[4])
-	fmt.Printf("States: %.2f\n", percent[5])
-	fmt.Fprintf(w, "%.2f", percent[0]+percent[2])
+	fmt.Fprintf(w, "%.2f", percent[0])
 }

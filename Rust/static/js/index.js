@@ -22,16 +22,17 @@ function graph(){
 function getData(){
     $.get(`${ip}/api/cpu`, function (result) {
         console.log(result);
+        var cpu = result.split('"');
         data.push({
             time : Date.now(),
-            value : parseFloat(result).toFixed(2)
+            value : parseFloat(cpu[1]).toFixed(2)
         });
         if(data.length > 30){
             data.splice(0,1);
         }
         graph();
         console.log(data);
-        document.getElementById("uso").innerHTML = `% de Uso: ${parseFloat(result).toFixed(2)}`;
+        document.getElementById("uso").innerHTML = `% de Uso: ${parseFloat(cpu[1]).toFixed(2)}`;
     });      
 }
 

@@ -1,12 +1,23 @@
 FROM rust:1.41.0 as build-env
 
 EXPOSE 8000
-WORKDIR /usr/src/hello-rocket
+#WORKDIR /usr/src/hello-rocket
 
-COPY . .
+#COPY . .
+
+#RUN rustup default nightly
+#RUN cargo build --release
+#RUN cargo install --path .
+
+#CMD ["/usr/local/cargo/bin/hello-rocket"]
+WORKDIR /app
+ADD . /app
 
 RUN rustup default nightly
 RUN cargo build --release
-RUN cargo install --path .
+#RUN cargo install --path .
 
-CMD ["/usr/local/cargo/bin/hello-rocket"]
+FROM gcr.io/distroless/cc
+COPY --from=build-env /app/target/release/hello-rocket /
+
+CMD ["./hello-rocket"]
