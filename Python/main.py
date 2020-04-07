@@ -14,6 +14,11 @@ def hello():
     message = "The Flask Shop"
     return render_template('index.html', message=message)
 
+@app.route("/rust")
+def rust():
+    message = "The Flask Shop"
+    return render_template('rust.html', message=message)
+
 @app.route("/ram")
 def ram():    
     value = client.lrange("ram",0,10)
@@ -23,7 +28,7 @@ def ram():
 @app.route("/cpu")
 def cpu():    
     value = client.lrange("cpu",0,10)
-    print(value)
+    print("Last:" + value2)
     return ''.join(str(x) + "-" for x in value)
 
-app.run(host ='0.0.0.0', port = 5001, debug = True)
+app.run(host ='0.0.0.0', port = 5001, debug = False)

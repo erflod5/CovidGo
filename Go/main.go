@@ -2,12 +2,14 @@ package main
 
 import (
 	"fmt"
+	"io/ioutil"
+	"log"
 	"net/http"
-	"os"
+	"strconv"
+	"strings"
 	"time"
 
 	"github.com/go-redis/redis"
-	"github.com/mackerelio/go-osstat/memory"
 )
 
 func main() {
@@ -27,21 +29,36 @@ func main() {
 }
 
 func indexRoute(w http.ResponseWriter, r *http.Request) {
-	memory, err := memory.Get()
-	if err != nil {
-		fmt.Fprintf(w, "%s\n", err)
+	resp, error := http.Get("http://localhost:8002/ram")
+	if error != nil {
+		fmt.Println("Error")
+		fmt.Fprintf(w, "{ \"total\" : %s, \"used\": %s, \"free\": %s }", "1", "1", "1")
 	} else {
-		fmt.Fprintf(w, "{ \"total\" : %d, \"used\": %d, \"free\": %d }", memory.Total/1024/1024, memory.Used/1024/1024, memory.Free/1024/1024)
+		defer resp.Body.Close()
+		body, err := ioutil.ReadAll(resp.Body)
+		if err != nil {
+			log.Fatal("Error reading response. ", err)
+		}
+		s := strings.Split(string(body), ",")
+		fmt.Fprintf(w, "{ \"total\" : %s, \"used\": %s, \"free\": %s }", s[0], s[1], s[2])
 	}
 }
 
 func printMemUsage() {
-	memory, err := memory.Get()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "%s\n", err)
-		return
+	resp, error := http.Get("http://localhost:8002/ram")
+	if error != nil {
+		fmt.Println("Error")
+	} else {
+		defer resp.Body.Close()
+		body, err := ioutil.ReadAll(resp.Body)
+		if err != nil {
+			log.Fatal("Error reading response. ", err)
+		}
+		s := strings.Split(string(body), ",")
+		i, err := strconv.ParseUint(s[0], 10, 64)
+		j, err := strconv.ParseUint(s[1], 10, 64)
+		addDataToRedis(j, i)
 	}
-	addDataToRedis((memory.Used / 1024 / 1024), (memory.Total / 1024 / 1024))
 }
 
 func addDataToRedis(value uint64, total uint64) {
