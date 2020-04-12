@@ -29,7 +29,7 @@ func main() {
 }
 
 func indexRoute(w http.ResponseWriter, r *http.Request) {
-	resp, error := http.Get("http://localhost:8002/ram")
+	resp, error := http.Get("http://3.14.52.42:8002/ram")
 	if error != nil {
 		fmt.Println("Error")
 		fmt.Fprintf(w, "{ \"total\" : %s, \"used\": %s, \"free\": %s }", "1", "1", "1")
@@ -45,7 +45,7 @@ func indexRoute(w http.ResponseWriter, r *http.Request) {
 }
 
 func printMemUsage() {
-	resp, error := http.Get("http://localhost:8002/ram")
+	resp, error := http.Get("http://3.14.52.42:8002/ram")
 	if error != nil {
 		fmt.Println("Error")
 	} else {
@@ -63,7 +63,7 @@ func printMemUsage() {
 
 func addDataToRedis(value uint64, total uint64) {
 	client := redis.NewClient(&redis.Options{
-		Addr:     "192.168.1.187:7001",
+		Addr:     "3.14.52.42:7001",
 		Password: "", // no password set
 		DB:       0,  // use default DB
 	})

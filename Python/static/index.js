@@ -1,4 +1,4 @@
-const ip = 'http://localhost:5001';
+const ip = 'http://3.14.52.42:5001';
 
 var data =[];
 
